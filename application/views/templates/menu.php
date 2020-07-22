@@ -1,5 +1,5 @@
 <!-- Menu start -->
-<div class="col-lg-3 col-lg-pull-9">
+<div class="col-md-3 col-md-pull-9">
     
     <div class="panel panel-info hidden-xs">
         <div class="panel-heading"><div class="sidebar-header">Поиск</div></div>
@@ -36,11 +36,15 @@
 
 
     <div class="panel panel-info">
-        <div class="panel-heading"><div class="sidebar-header">Новости</div></div>
+        <div class="panel-heading"><div class="sidebar-header"><a href="/news">Новости</a></div></div>
         <div class="panel-body">
-        <p>31.02.2017</p>
-        <p>Мы запустили новый сервис</p>
-        <hr>
+
+        <?php foreach ($news as $key => $value): ?>
+            <p>
+                <a href="/news/view/<?php echo $value['slug']; ?>"> <?php echo $value['title']; ?> </a> 
+            </p>
+        <?php endforeach ?>
+        
         </div>
     </div>
 
@@ -51,45 +55,12 @@
     
         <ul class="list-group">
 
+        <?php foreach ($films as $key => $value): ?>
             <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.9</span>
-            <a href="show.html">Интерстеллар</a>
+                <span class="badge"><?php echo $value['rating']; ?></span>
+                <a href="show.html"><?php echo $value['name']; ?></a>
             </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.7</span>
-            <a href="#">Безумный Макс</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.3</span>
-            <a href="#">Матрица</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.1</span>
-            <a href="#">Облачный атлас</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.9</span>
-            <a href="#">Интерстеллар</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.7</span>
-            <a href="#">Безумный Макс</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.3</span>
-            <a href="#">Матрица</a>
-            </li>
-
-            <li class="list-group-item list-group-item-warning">
-            <span class="badge">8.1</span>
-            <a href="#">Облачный атлас</a>
-            </li>
+        <?php endforeach ?>
 
         </ul>
 

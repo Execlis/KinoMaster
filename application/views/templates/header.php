@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>КиноМастер BP</title>
+<title><?php echo $title; ?></title>
 
 <!-- Bootstrap -->
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
             
             <div class="row">
             
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <h1><a href="/">КиноМастер</a></h1>
                 <p>Кино - наша радость</p>
             </div>
@@ -81,7 +81,7 @@
     
     <div class="row">
     
-    <div class="col-lg-9 col-lg-push-3">
+    <div class="col-md-9 col-md-push-3">
 
         <form role="search" class="visible-xs">
             <div class="form-group">

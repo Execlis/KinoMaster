@@ -1,5 +1,5 @@
-Новость добавлена!<br>
+<p>Новость добавлена!</p><br>
 
-<button onclick="document.location='../'" >Вернуться к новостям</button>
+<button class="btn btn-default" onclick="document.location='../'" >Вернуться к новостям</button>
 
 

@@ -1,7 +1,7 @@
 <!-- Footer start -->
 </div>
 
-<?php  $this->load->view('templates/menu'); ?>  <!-- подгрузка меню -->
+<?php  $this->load->view('templates/menu', $news, $films); ?>  <!-- подгрузка меню -->
 
     </div> 
 
