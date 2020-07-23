@@ -74,7 +74,7 @@ class News extends MY_Controller {
             $text = $this->input->post('text');
 
             if ($this->news_model->updateNews($slug, $title, $text)) {
-                echo "Новость успешно отредактированна";
+                echo "Новость успешно отредактирована";
             }
         }
         $this->load->view('templates/header', $this->data);
