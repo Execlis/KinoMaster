@@ -1,4 +1,4 @@
-<form action="news/create/" method="post">
+<form action="/news/create/" method="post">
 
 <input class="form-control input-lg" type="input" name="slug" placeholder="slug"><br>
 <input class="form-control input-lg" type="input" name="title" placeholder="название новости"><br>
