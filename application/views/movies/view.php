@@ -1,26 +1,26 @@
-<h1>Интерстеллар</h1>
+<h1><?php echo $title; ?></h1>
     <hr>
     <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6ybBuTETr3U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+    <iframe class="embed-responsive-item" src="<?php echo $player_code; ?>" frameborder="0" allowfullscreen></iframe>  
     </div>
     <div class="well info-block text-center">
-    Год: <span class="badge">2014</span>
-    Рейтинг: <span class="badge">8.9</span>
-    Режисёр: <span class="badge">Кристофер Нолан</span>
+    Год: <span class="badge"><?php echo $year; ?></span>
+    Рейтинг: <span class="badge"><?php echo $rating; ?></span>
+    Режисёр: <span class="badge"><?php echo $producer; ?></span>
     </div>
 
     <div class="margin-8"></div>
 
-    <h2>Описание Интерстеллар</h2>
+    <h2>Описание фильма <?php echo $title; ?></h2>
     <hr>
 
     <div class="well">
-    Когда засуха, пыльные бури и вымирание растений приводят человечество к продовольственному кризису, коллектив исследователей и учёных отправляется сквозь червоточину (которая предположительно соединяет области пространства-времени через большое расстояние) в путешествие, чтобы превзойти прежние ограничения для космических путешествий человека и найти планету с подходящими для человечества условиями.
+    <?php echo $descriptions_movie; ?>
     </div>
 
     <div class="margin-8"></div>
 
-    <h2>Отзывы об Интерстеллар</h2>
+    <h2>Отзывы о фильме <?php echo $title; ?></h2>
     <hr>
 
     <div class="panel panel-info">
