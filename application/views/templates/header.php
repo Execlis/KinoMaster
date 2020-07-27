@@ -61,7 +61,7 @@
             <li class="active"> <a href="/">Главная</a></li>
             <li> <a href="/movies/type/films/">Фильмы</a> </li>
             <li> <a href="/movies/type/serials/">Сериалы</a> </li>
-            <li> <a href="rating.html">Рейтинг</a> </li>
+            <li> <a href="/movies/ratings/films/">Рейтинг</a> </li>
             <li> <a href="contacts.html">Контакты</a> </li>
         </ul>
 
