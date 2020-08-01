@@ -1,6 +1,8 @@
 <h1><?php echo $title; ?></h1>
     <hr>
 
+    <?php echo $pagination; ?>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -25,3 +27,5 @@
         </tbody>
 <?php endforeach ?>        
     </table>
+
+    <?php echo $pagination; ?>

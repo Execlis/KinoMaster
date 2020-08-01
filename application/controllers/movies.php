@@ -8,22 +8,59 @@ class Movies extends MY_Controller {
     }
 
     public function type($slug = NULL) {
+        $this->load->library('pagination');
         
         $this->data['movie_data'] = null;
 
+        $offset = $this->uri->segment(4);
+
+        $row_count = 5;
+
+        $count = 0;
+
         if($slug == "films") {
+            $count = count($this->films_model->getMoviesOnPage(0, 1));
+            $p_config['base_url'] = '/movies/type/films/';
             $this->data['title'] = "Фильмы";
-            $this->data['movie_data'] = $this->films_model->getFilms(false, 10, 1);
+            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 1);
         }
 
         if($slug == "serials") {
+            $count = count($this->films_model->getMoviesOnPage(0, 2));
+            $p_config['base_url'] = '/movies/type/serials/';
             $this->data['title'] = "Сериалы";
-            $this->data['movie_data'] = $this->films_model->getFilms(false, 10, 2);
+            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 2);
         }
 
         if($this->data['movie_data'] == null) {
             show_404();
         }
+
+        // Pagination config
+        $p_config['total_rows'] = $count;
+        $p_config['per_page'] = $row_count;
+
+        $p_config['first_link'] = "Первая";
+        $p_config['last_link'] = "Последняя";
+        $p_config['full_tag_open'] = "<ul class='pagination'>";
+        $p_config['full_tag_close'] = "</ul>";
+        $p_config['num_tag_open'] = "<li>";
+        $p_config['num_tag_close'] = "</li>";
+        $p_config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $p_config['cur_tag_close'] = "<span class = 'sr-only'></span></a></li>";
+        $p_config['next_tag_open'] = "<li>";
+        $p_config['next_tagl_close'] = "</li>";
+        $p_config['prev_tag_open'] = "<li>";
+        $p_config['prev_tagl_close'] = "</li>";
+        $p_config['first_tag_open'] = "<li>";
+        $p_config['first_tagl_close'] = "</li>";
+        $p_config['last_tag_open'] = "<li>";
+        $p_config['last_tagl_close'] = "</li>";
+
+        //init pagination
+        $this->pagination->initialize($p_config);
+
+        $this->data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('templates/header', $this->data);
         $this->load->view('movies/type', $this->data);
@@ -31,12 +68,21 @@ class Movies extends MY_Controller {
     }
 
     public function ratings($slug = NULL) {
-        
+        $this->load->library('pagination');
+
         $this->data['movie_data'] = null;
 
+        $offset = $this->uri->segment(4);
+
+        $row_count = 10;
+
+        $count = 0;
+
         if($slug == "films") {
+            $count = count($this->films_model->getMoviesOnPage(0, 1));
+            $p_config['base_url'] = '/movies/ratings/films/';
             $this->data['title'] = "Рейтинг фильмов";
-            $this->data['movie_data'] = $this->films_model->getFilmsByRatingById(8, 1);
+            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 2);
         }
 
         if($slug == "serials") {
@@ -47,6 +93,32 @@ class Movies extends MY_Controller {
         if($this->data['movie_data'] == null) {
             show_404();
         }
+
+        // Pagination config
+        $p_config['total_rows'] = $count;
+        $p_config['per_page'] = $row_count;
+
+        $p_config['first_link'] = "Первая";
+        $p_config['last_link'] = "Последняя";
+        $p_config['full_tag_open'] = "<ul class='pagination'>";
+        $p_config['full_tag_close'] = "</ul>";
+        $p_config['num_tag_open'] = "<li>";
+        $p_config['num_tag_close'] = "</li>";
+        $p_config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $p_config['cur_tag_close'] = "<span class = 'sr-only'></span></a></li>";
+        $p_config['next_tag_open'] = "<li>";
+        $p_config['next_tagl_close'] = "</li>";
+        $p_config['prev_tag_open'] = "<li>";
+        $p_config['prev_tagl_close'] = "</li>";
+        $p_config['first_tag_open'] = "<li>";
+        $p_config['first_tagl_close'] = "</li>";
+        $p_config['last_tag_open'] = "<li>";
+        $p_config['last_tagl_close'] = "</li>";
+
+        //init pagination
+        $this->pagination->initialize($p_config);
+
+        $this->data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('templates/header', $this->data);
         $this->load->view('movies/ratings', $this->data);

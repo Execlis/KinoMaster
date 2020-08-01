@@ -54,7 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['movies/(:any)'] = 'movies/edit/$1'; 
-
+$route['movies/type/films'] = 'movies/type/films/$1'; 
+$route['movies/type/serials'] = 'movies/type/serials/$1';
 
 $route['news'] = 'news'; 
 $route['news/create'] = 'news/create'; 

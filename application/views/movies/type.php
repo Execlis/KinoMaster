@@ -1,6 +1,8 @@
 <h1><?php echo $title; ?></h1>
 <hr>
 
+<?php echo $pagination; ?>
+
 <?php foreach ($movie_data as $key => $value): ?>
     <div class="row">
         <div class="well clearfix">
@@ -17,5 +19,7 @@
         </div>
     </div>
 <?php endforeach ?>
+
+<?php echo $pagination; ?>
 
 

@@ -5,6 +5,7 @@ class Films_model extends CI_model {
         $this->load->database();
     }
 
+
     public function getFilms($slug = FALSE, $limit, $type = 1) {
         if($slug === FALSE) {
             $query = $this->db
@@ -41,4 +42,16 @@ class Films_model extends CI_model {
 
             return $query->result_array();
     }
+
+    public function getMoviesOnPage($row_count, $offset, $type = 1) {
+        $query = $this->db
+            ->where('category_id', $type)
+            ->order_by('add_date', 'desc')
+            ->get('movie', $row_count, $offset);
+
+            return $query->result_array();
+    }
+
+
+
 }
