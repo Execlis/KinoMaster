@@ -32,13 +32,12 @@ class Films_model extends CI_model {
             return $query->result_array();
     }
 
-    public function getFilmsByRatingById($limit, $type = 1) {
+    public function getFilmsByRatingById($row_count, $offset, $type = 1) {
         $query = $this->db
-            ->where('category_id', $type)
             ->order_by('rating', 'desc')
-            ->where('rating>', 0)
-            ->limit($limit)
-            ->get('movie');
+            ->where('category_id', $type)
+            
+            ->get('movie', $row_count, $offset);
 
             return $query->result_array();
     }

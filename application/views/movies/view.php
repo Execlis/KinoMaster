@@ -23,19 +23,16 @@
     <h2>Отзывы о фильме <?php echo $title; ?></h2>
     <hr>
 
+    <?php foreach ($comments as $key => $value): ?>
+
     <div class="panel panel-info">
-        <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> <span>Сергей</span></div>
+        <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> <span><?php echo getUserNameById($value['user_id'])->username; ?></span></div>
         <div class="panel-body">
-        Отлично
+        <?php echo $value['comment_text']; ?>
         </div>
     </div>
 
-    <div class="panel panel-info">
-        <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> <span>Артём</span></div>
-        <div class="panel-body">
-        Превосходный фильм
-        </div>
-    </div>
+    <?php endforeach ?>
 
     <form>
         <div class="form-group">

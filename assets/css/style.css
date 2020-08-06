@@ -170,10 +170,18 @@ textarea.form-control {
 	margin-bottom: 5%;
 }
 
+.img-ratings {
+	width: 54px;
+	height: 76px;
+}
+
 .table tbody>tr>td.vert-align {
 	vertical-align: middle;
 }
 
+.table tbody>tr>td.coll {
+	width: 550px;
+}
 
 .pagination>.active>a {
     z-index: 3;

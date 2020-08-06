@@ -33,6 +33,11 @@ class News extends MY_Controller {
     }
 
     public function create(){
+
+        if(!$this->dx_auth->is_admin()){
+            show_404();
+        }
+
         $this->data['title'] = "добавить новость";
 
         if ($this->input->post('slug') && $this->input->post('title') && $this->input->post('text')) {
@@ -56,6 +61,11 @@ class News extends MY_Controller {
     }    
 
     public function edit($slug = NULL){
+
+        if(!$this->dx_auth->is_admin()){
+            show_404();
+        }
+
         $this->data['title'] = "редактировать новость";
         $this->data['news_item'] = $this->news_model->getNews($slug);
         
@@ -83,6 +93,13 @@ class News extends MY_Controller {
     }
 
     public function delete($slug = NULL){
+
+        if(!$this->dx_auth->is_admin()){
+            //show_404();
+            $this->load->helper('url_helper');
+            redirect('/', 'location');
+        }
+
         $this->data['news_delete'] = $this->news_model->getNews($slug);
         
         if (empty($this->data['news_delete'])) {

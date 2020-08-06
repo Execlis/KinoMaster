@@ -7,6 +7,8 @@ class Movies extends MY_Controller {
         parent::__construct();
     }
 
+// MOVIES
+
     public function type($slug = NULL) {
         $this->load->library('pagination');
         
@@ -67,6 +69,8 @@ class Movies extends MY_Controller {
         $this->load->view('templates/footer');
     }
 
+// RATINGS
+
     public function ratings($slug = NULL) {
         $this->load->library('pagination');
 
@@ -78,16 +82,20 @@ class Movies extends MY_Controller {
 
         $count = 0;
 
-        if($slug == "films") {
+        if($slug == "films_rating") {
             $count = count($this->films_model->getMoviesOnPage(0, 1));
-            $p_config['base_url'] = '/movies/ratings/films/';
-            $this->data['title'] = "Рейтинг фильмов";
-            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 2);
+            $p_config['base_url'] = '/movies/ratings/films_rating/';
+            $this->data['title'] = "Рейтинг фильмов | <a href='/movies/ratings/serials_rating/'> сериалов</a>";
+           // $this->data['title_two'] = '<a href="/movies/ratings/serials/"> сериалов</a>';
+            $this->data['movie_data'] = $this->films_model->getFilmsByRatingById($row_count, $offset, 1);
         }
 
-        if($slug == "serials") {
-            $this->data['title'] = "Рейтинг сериалов";
-            $this->data['movie_data'] = $this->films_model->getFilmsByRatingById(8, 2);
+        if($slug == "serials_rating") {
+            $count = count($this->films_model->getMoviesOnPage(0, 2));
+            $p_config['base_url'] = '/movies/ratings/serials_rating/';
+            $this->data['title'] = "Рейтинг <a href='/movies/ratings/films_rating/'>фильмов </a>| сериалов";
+           // $this->data['title_two'] = '<a href="/movies/ratings/films/"> фильмов</a>';
+            $this->data['movie_data'] = $this->films_model->getFilmsByRatingById($row_count, $offset, 2);
         }
 
         if($this->data['movie_data'] == null) {
@@ -132,6 +140,9 @@ class Movies extends MY_Controller {
         if(empty($movie_slug)) {
             show_404();
         }
+
+        $this->load->model('comments_model');
+        $this->data['comments'] = $this->comments_model->getComments($movie_slug['id'], 100);
 
         $this->data['title'] = $movie_slug['name'];
         $this->data['year'] = $movie_slug['year'];

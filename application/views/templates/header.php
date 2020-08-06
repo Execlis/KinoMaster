@@ -54,15 +54,15 @@
         </button>
 
         </div>
-
+        
         <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
         
         <ul class="nav nav-pills">
-            <li class="active"> <a href="/">Главная</a></li>
-            <li> <a href="/movies/type/films/">Фильмы</a> </li>
-            <li> <a href="/movies/type/serials/">Сериалы</a> </li>
-            <li> <a href="/movies/ratings/films/">Рейтинг</a> </li>
-            <li> <a href="contacts.html">Контакты</a> </li>
+            <li <?php echo show_active_menu(0); ?> > <a href="/">Главная</a></li>
+            <li <?php echo show_active_menu('films'); ?> > <a href="/movies/type/films/">Фильмы</a> </li>
+            <li <?php echo show_active_menu('serials'); ?> > <a href="/movies/type/serials/">Сериалы</a> </li>
+            <li <?php echo show_active_menu('films_rating'); ?><?php echo show_active_menu('serials_rating'); ?> > <a href="/movies/ratings/films_rating/">Рейтинг</a> </li>
+            <li <?php echo show_active_menu('contact'); ?> > <a href="/contact/">Контакты</a> </li>
         </ul>
 
         </div>
